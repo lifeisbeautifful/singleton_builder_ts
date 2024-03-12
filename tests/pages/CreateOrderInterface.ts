@@ -1,0 +1,5 @@
+interface CreateOrderInterface
+{
+    addOneItemTocard();
+    addAllItemsToCard();
+}
