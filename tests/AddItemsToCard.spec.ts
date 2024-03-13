@@ -1,6 +1,7 @@
 import {expect, test} from "@playwright/test";
 import Loginpage from "./pages/LoginPage";
 import ProductsPage from "./pages/ProductsPage";
+import CreateOrder from "./pages/CreateOrder";
 
 test.describe.serial("Add products to card test", async() => {
     test.beforeAll("Login", async() => {
@@ -13,16 +14,24 @@ test.describe.serial("Add products to card test", async() => {
     test("Add one item to card", async() => {
         const productspage = new ProductsPage();
         await productspage.initPage();
-        await productspage.addOneItemTocard();
+        const order = new CreateOrder(productspage);
+        await order.addFirstItemToCard();
         await productspage.cardItemsToEqual("1");
     });
 
-    test("Add all items to card", async() => {
+    test("Add several items to card", async() => {
         const productspage = new ProductsPage();
         await productspage.initPage();
-        await productspage.addAllItemsToCard();
-        await productspage.cardItemsToEqual("6");
+        const order = new CreateOrder(productspage);
+        await order.addItemsToCard(2);
+        await productspage.cardItemsToEqual("2");
+    });
 
+    test.afterEach("Clear cart", async() => {
+        const productspage = new ProductsPage();
+        await productspage.initPage();
+        const order = new CreateOrder(productspage);
+        await order.clearCart();
     })
 })
 

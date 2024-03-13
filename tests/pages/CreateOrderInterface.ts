@@ -1,5 +1,6 @@
 interface CreateOrderInterface
 {
-    addOneItemTocard();
-    addAllItemsToCard();
+    addFirstItemTocard();
+    addtemsToCard(items:Number);
+    clearCart();
 }

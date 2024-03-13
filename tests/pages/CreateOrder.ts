@@ -1,21 +1,24 @@
 export default class CreateOrder
 {
-    readonly CreateOrders: CreateOrderInterface;
+    readonly Orders: CreateOrderInterface;
 
     constructor(createOrders: CreateOrderInterface)
     {
-        this.CreateOrders = createOrders;
-
+        this.Orders = createOrders;
     }
 
-    async addOneItemToCard()
+    async addFirstItemToCard()
     {
-        await this.CreateOrders.addOneItemTocard();
-
+        await this.Orders.addFirstItemTocard();
     }
 
-    async addAllItemsToCard()
+    async addItemsToCard(items:Number)
     {
-        await this.CreateOrders.addAllItemsToCard();
+        await this.Orders.addtemsToCard(Number(items));
+    }
+
+    async clearCart()
+    {
+        await this.Orders.clearCart();
     }
 }
