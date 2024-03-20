@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "tests:debug":"playwright test --config=playwright.config.ts --debug",
+    "tests":"playwright test --config=playwright.config.ts",
+    "tests:line":"playwright test --config=playwright.config.ts"
+
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

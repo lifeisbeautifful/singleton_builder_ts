@@ -1,8 +1,7 @@
 import BasePage from "./BasePage";
 import{Locator, expect} from "@playwright/test";
-import path from "path";
 import dotenv from "dotenv";
-dotenv.config({path:path.resolve('../tests/.env')});
+dotenv.config();
 
 export default class Loginpage
 {
@@ -29,6 +28,7 @@ export default class Loginpage
     async Login()
     {
         await this.userNameField.fill("standard_user");
+        //await this.userNameField.fill(process.env.USERNAME as string);
         await this.passwordField.fill("secret_sauce");
         await this.loginBtn.click();
         await expect(this.page).toHaveURL("https://www.saucedemo.com/inventory.html");

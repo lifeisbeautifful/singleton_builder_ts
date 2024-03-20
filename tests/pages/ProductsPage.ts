@@ -8,6 +8,7 @@ export default class ProductsPage implements CreateOrderInterface
     souceLabBackPackAddBtn:Locator;
     addToCardBtns:any;
     removeBtns:any;
+    //filter:Locator;
 
     constructor()
     {
@@ -20,6 +21,10 @@ export default class ProductsPage implements CreateOrderInterface
         await this.page.goto(ProductsPage.pageUrl);
         this.souceLabBackPackAddBtn = await this.page.locator("//button[@id='add-to-cart-sauce-labs-backpack']");
         this.addToCardBtns = await this.page.locator("//button[contains(text(), 'Add to cart')]").all();
+        // this.filter = await this.page.selectOption("//select[@class='product_sort_container']", 'Price (low to high)');
+        // await this.page.locateAll("//select[@class='product_sort_container']");
+        // this.addToCardBtns.dragTo(this.filter);
+        //await this.page.waitForNavigation();
     }
 
     async addFirstItemTocard() 
