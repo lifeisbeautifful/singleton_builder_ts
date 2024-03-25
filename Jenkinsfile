@@ -16,14 +16,8 @@ pipeline {
     stage('test') {
       steps {
         sh '''
-        npm run smoke
+        npm run tests
         '''
-      }
-      post {
-        success {
-          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-          sh 'rm -rf *.png'
-        }
       }
     }
   }
